@@ -1,0 +1,36 @@
+﻿@model IEnumerable<Fetch_API.Models.PersonModel>
+
+<div>
+    <h5>@TempData["Message"]</h5>
+</div>
+
+
+<div>
+    <a asp-action="Edit" asp-controller="Person">
+        Add new Person
+    </a>
+</div>
+
+<table>
+    <tr>
+        <th>Person ID</th>
+        <th>Name</th>
+        <th>Email ID</th>
+        <th>Contact</th>
+        <th>Actions</th>
+    </tr>
+    @foreach(var i in Model)
+    {
+       <tr>
+           <td>@i.PersonID</td>
+            <td>@i.Name</td>
+            <td>@i.Email</td>
+            <td>@i.Contact</td>
+            <td>
+                <a class="btn btn-primary" href="@Url.Action("Edit","Person",new{PersonID=i.PersonID})">Edit</a>
+                <a class="btn btn-danger" href="@Url.Action("Delete","Person",new{PersonID=i.PersonID})">Delete</a>
+
+            </td>
+       </tr> 
+    }
+</table>
